@@ -1,12 +1,15 @@
 #!/bin/bash
+echo THIS SCRIPT WAS CREATE BY ALEX
 echo PLEASE ENTER COMMIT MESSAGE:
-read cmt_message
+read user_comit_message
+echo NOW ADDING ALL FILES
 git add *
 echo ====================
-echo Added files to commit
-git commit -m "$cmt_message"
+echo SUCCESSFULLY ADDED ALL FILES TO COMMIT
+git status
+git commit -m "$user_comit_message"
 echo ====================
-echo git commit has been ran now pushing
+echo FILE SUCCESSFULLY ADDE
 git push
 echo ====================
 echo PUSH SUCCESSFUL
