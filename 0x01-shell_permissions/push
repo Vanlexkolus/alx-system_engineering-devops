@@ -1,15 +1,16 @@
 #!/bin/bash
-echo THIS SCRIPT WAS CREATE BY ALEX
+echo ===={{{THIS SCRIPT WAS CREATE BY ALEX}}}====
 echo PLEASE ENTER COMMIT MESSAGE:
 read user_comit_message
 echo NOW ADDING ALL FILES
 git add *
 echo ====================
-echo SUCCESSFULLY ADDED ALL FILES TO COMMIT
 git status
+echo SUCCESSFULLY STAGGED ALL FILES AND READY TO COMMIT
 git commit -m "$user_comit_message"
-echo ====================
-echo FILE SUCCESSFULLY ADDE
+echo ====================loading 100% completed........
+echo FILES SUCCESSFULLY ADDED TO COMMIT.
+echo NOW PUSHING ALL FILES, 100% Completed......
 git push
 echo ====================
 echo PUSH SUCCESSFUL
