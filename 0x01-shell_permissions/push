@@ -1,4 +1,4 @@
 #!/bin/bash
 git add *
-git commit -m read
+git commit read -i
 git push
