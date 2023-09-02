@@ -1,6 +1,4 @@
 #!/bin/bash
 git add *
-git commit 
+git commit -m read
 git push
-
-
