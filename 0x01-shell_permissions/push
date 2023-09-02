@@ -1,4 +1,12 @@
 #!/bin/bash
+echo PLEASE ENTER COMMIT MESSAGE:
+read cmt_message
 git add *
-git commit read -i
+echo ====================
+echo Added files to commit
+git commit -m "$cmt_message"
+echo ====================
+echo git commit has been ran now pushing
 git push
+echo ====================
+echo PUSH SUCCESSFUL
