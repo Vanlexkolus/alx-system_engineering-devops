@@ -1,5 +1,5 @@
 #!/bin/bash
-echo ===={{{THIS SCRIPT WAS CREATE BY ALEX}}}====
+echo ===={{{THIS SCRIPT WAS CREATEED BY ALEX}}}====
 echo PLEASE ENTER COMMIT MESSAGE:
 read user_comit_message
 echo NOW ADDING ALL FILES
@@ -14,3 +14,4 @@ echo NOW PUSHING ALL FILES, 100% Completed......
 git push
 echo ====================
 echo PUSH SUCCESSFUL
+echo PLEASE INPUT YOUR USERNAME AND TOKEN BELOW
