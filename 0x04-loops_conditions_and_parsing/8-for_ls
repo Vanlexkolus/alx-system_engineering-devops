@@ -1,12 +1,17 @@
 #!/usr/bin/env bash
+# This is a Bash script that displays:
+#
+# - The content of the current directory
+# - In a list format
+# - Where only the part of the name after the first dash is displayed (refer to the example)
+##############################################################################################
 
-# Loop through files in the current directory (excluding hidden files)
-for file in *; do
-    # Check if the file is not a hidden file
-    if [[ ! $file == .* ]]; then
-        # Use cut command to extract the part of the name after the first dash
-        name=$(echo "$file" | cut -d'-' -f2-)
-        # Print the extracted name
-        echo "$name"
-    fi
+for content in ./*
+do
+	if [ -f "$content" ]
+	then
+		filename="${content##*/}"
+		processedfile="${filename#*-}"
+		echo "$processedfile"
+	fi
 done
