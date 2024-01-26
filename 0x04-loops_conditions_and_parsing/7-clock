@@ -6,7 +6,7 @@ count=13
 Hour=0
 while [ $count -ne $Hour ]
 do
-    echo $Hour
+    echo "Hour: $Hour"
     echo {1..59}
     ((Hour++))
 done
