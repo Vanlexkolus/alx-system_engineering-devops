@@ -7,6 +7,9 @@ Hour=0
 while [ $count -ne $Hour ]
 do
     echo "Hour: $Hour"
-    echo {1..59}
-    ((Hour++))
+    for minute in {1..59}
+    do
+        echo "$minute"
+    done
+        ((Hour++))
 done
