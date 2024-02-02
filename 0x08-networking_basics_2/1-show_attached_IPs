@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Script to display total addresses (IPV 4)
+
+ipv4_addresses=$(awk '/^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+/ {print $1}' /etc/hosts)
+echo "$ipv4_addresses"
