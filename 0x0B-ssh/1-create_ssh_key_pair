@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#	This script creates an RSA key then gives with a specific bit, New-passphrase and a file
+
+ssh-keygen -b 4096 -f school -N betty
