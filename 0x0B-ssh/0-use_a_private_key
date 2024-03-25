@@ -1,8 +1,4 @@
 #!/usr/bin/env bash
-# defining variables below
+#	a script that connects to a server
 
-user=ubuntu
-server_ip=100.26.246.96
-path=~/.ssh/school
-
-ssh "$user"@"$server" -i "$path"
+ssh ubuntu@100.26.246.96 -i ~/.ssh/school
