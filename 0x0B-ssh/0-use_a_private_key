@@ -2,7 +2,7 @@
 # defining variables below
 
 user=ubuntu
-server_ip=100.26.246.96
+server_ip=8.8.8.8
 path=~/.ssh/school
 
 ssh -i "$path" "$user"@"$server"
