@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# defining variables below
 
 user=ubuntu
 server_ip=100.26.246.96
