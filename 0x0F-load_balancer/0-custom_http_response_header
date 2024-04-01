@@ -1,28 +1,37 @@
 #!/usr/bin/env bash
-# configure web-02 to be identical to web-01. Fortunately, you built a Bash script during your web server project, and they’ll now come in handy to easily configure web-02.s
+# Config web 1 and 2, Installs Nginx with the following configurations:
+#+    Listens on port 80
+#+    Returns a page containing "Hello World" when queried
+#+     at the root with a curl GET request.
+#+    Configures /redirect_me as a "301 Moved Permanently".
+#+    Includes a custom 404 page containing "Ceci n'est pas une page".
+#+    Contains a custom HTTP header named X-Served-By.
+#+    The value of the HTTP header is the hostname of the running server.
 
-balancer="\
-frontend haproxy_balancer
-    bind *:80
-    mode http
-    default_backend webservers
-    
-backend webservers
-    balance roundrobin
-    server 524340-web-01 100.26.246.96 check
-    server 524340-web-02 100.26.158.242 check
-"
-# Update packages
-apt-get -y update
-apt-get -y upgrade
+apt-get update
+apt-get install -y nginx
 
-# Add HAProxy PPA
-apt-get -y install software-properties-common
-add-apt-repository -y ppa:vbernat/haproxy-2.5
-apt-get -y update
+touch /var/www/html/index.html
+echo "Hello World" > /var/www/html/index.html
+touch /var/www/html/404.html
+echo "Ceci n'est pas une page" > /var/www/html/404.html
 
-# Install HAProxy
-apt-get -y install haproxy
-cp -a /etc/haproxy/haproxy.cfg{,.orig}
-echo "$balancer" >> /etc/haproxy/haproxy.cfg
-service haproxy restart
+printf %s "server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    add_header X-Served-By $HOSTNAME;
+    root   /var/www/html;
+    index  index.html index.htm;
+
+    location /redirect_me {
+        return 301 http://cuberule.com/;
+    }
+
+    error_page 404 /404.html;
+    location /404 {
+      root /var/www/html;
+      internal;
+    }
+}" > /etc/nginx/sites-available/default
+
+service nginx restart

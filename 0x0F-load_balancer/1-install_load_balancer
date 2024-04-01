@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# configure web-02 to be identical to web-01. Fortunately, you built a Bash script during your web server project, and they’ll now come in handy to easily configure web-02.s
+
+balancer="\
+frontend haproxy_balancer
+    bind *:80                                                                               mode http
+    default_backend webservers
+
+backend webservers
+    balance roundrobin
+    server 524340-web-01 100.26.246.96 check
+    server 524340-web-02 100.26.158.242 check
+"
+# Update packages
+apt-get -y update
+apt-get -y upgrade
+
+# Add HAProxy PPA
+apt-get -y install software-properties-common                                           add-apt-repository -y ppa:vbernat/haproxy-2.5
+apt-get -y update
+
+# Install HAProxy
+apt-get -y install haproxy
+cp -a /etc/haproxy/haproxy.cfg{,.orig}
+echo "$balancer" >> /etc/haproxy/haproxy.cfg
+service haproxy restart
